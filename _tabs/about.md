@@ -5,8 +5,6 @@ order: 4
 ---
 
 
-## Welcome to Ctrl Alt Dean  
-
 Hey there! I'm Dean, a Cyber Security Analyst with a passion for both **red team and blue team** operations. Whether I’m defending against live threats in an **incident response engagement** or breaking into a CTF challenge, I thrive on the problem-solving and creativity that cybersecurity demands.  
 
 This blog is my space to document my **cyber journey**—from **CTF write-ups** and **homelab experiments** to deep dives into **digital forensics, malware analysis, and threat hunting**.  
