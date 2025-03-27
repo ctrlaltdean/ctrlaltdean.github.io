@@ -38,8 +38,11 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1   # Use your actual Ruby version
+          ruby-version: 3.1   # You can also use a .ruby-version file
           bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
 
       - name: Build Jekyll site
         run: bundle exec jekyll build -d "_site${{ steps.pages.outputs.base_path }}"
@@ -49,6 +52,13 @@ jobs:
       - name: Test site with htmlproofer
         run: |
           bundle exec htmlproofer _site --disable-external --check-html --allow_hash_href
+
+      # ⚠️ Workaround to force download of actions/upload-artifact@v3
+      - name: Dummy Upload (forces artifact action resolution)
+        uses: actions/upload-artifact@v3
+        with:
+          name: dummy
+          path: README.md  # Or any file that always exists in your repo
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
