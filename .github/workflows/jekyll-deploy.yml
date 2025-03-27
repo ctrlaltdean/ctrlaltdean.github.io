@@ -1,78 +1,37 @@
-name: "Build and Deploy Jekyll Site to GitHub Pages"
-
+name: 'Build & Release'
 on:
   push:
     branches:
-      - main
       - master
     paths-ignore:
       - .gitignore
       - README.md
       - LICENSE
 
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  build:
+  build-release:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b  # 3.2.2
 
-      - name: Setup GitHub Pages
-        id: pages
-        uses: actions/configure-pages@v3
+        with:
+          fetch-depth: 0  # for posts's lastmod
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@2654679fe7f7c29875c669398a8ec0791b8a64a1  # 1.215.0
         with:
-          ruby-version: 3.1   # You can also use a .ruby-version file
+          ruby-version: 3.2.2
           bundler-cache: true
 
-      - name: Install dependencies
-        run: bundle install
-
-      - name: Build Jekyll site
-        run: bundle exec jekyll build -d "_site${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-
-      - name: Test site with htmlproofer
+      - name: Check baseurl
         run: |
-          bundle exec htmlproofer _site --disable-external --check-html --allow_hash_href
+          baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
+          if [[ -n $baseurl ]]; then
+            echo "BASE_URL=$baseurl" >> $GITHUB_ENV
+          fi
 
-      # ⚠️ Workaround to force download of actions/upload-artifact@v3
-      - name: Dummy Upload (forces artifact action resolution)
-        uses: actions/upload-artifact@v3
-        with:
-          name: dummy
-          path: README.md  # Or any file that always exists in your repo
-
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Deploy
+        run: bash tools/release.sh
