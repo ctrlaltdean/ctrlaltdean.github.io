@@ -55,12 +55,6 @@ jobs:
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
-      - name: Upload artifact (optional use case)
-        uses: actions/upload-artifact@v3
-        with:
-          name: site-build
-          path: ./_site
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
