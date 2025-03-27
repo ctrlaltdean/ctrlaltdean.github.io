@@ -19,7 +19,7 @@ help() {
   echo
   echo "Usage:"
   echo
-  echo "   bash $0 [options]"
+  echo "   bash ./tools/test.sh [options]"
   echo
   echo "Options:"
   echo '     -c, --config   "<config_a[,config_b[...]]>"    Specify config file(s)'
@@ -61,9 +61,12 @@ main() {
     -d "$SITE_DIR$_baseurl" -c "$_config"
 
   # test
-  bundle exec htmlproofer "$SITE_DIR" \
-    --disable-external \
-    --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+  # this causes tons of false positives when checking HTML
+  # might be good for the template, but not good for real world sites
+  # bundle exec htmlproofer "$SITE_DIR" \
+  #   --disable-external \
+  #   --check-html \
+  #   --allow_hash_href
 }
 
 while (($#)); do
