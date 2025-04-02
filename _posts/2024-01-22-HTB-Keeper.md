@@ -1,8 +1,8 @@
 ---
 title: HTB-Keeper
-date: 2024-01-22
+date: 2025-04-02
 categories: [HTB]
-tags: [TAG]     # TAG names should always be lowercase
+tags: [cve-2022-32784, offensive, defaultcreds, easy, linux]     # TAG names should always be lowercase
 ---
 
 Keeper is a simple machine focused on a helpdesk running Request Tracker with an admin running KeePass for password management.  Default creds allow for the reconnaissance necessary to achieve initial access, while CVE-3033-32784 is later leveraged to get root.  Overall, this was a fun solve that highlighted a few common poor security practices leveraged by many organizations, with a pretty interesting exploit of a password manager, KeePass, which would normally be a valued and very secure tool for anyone attempting to securely store credentials.
