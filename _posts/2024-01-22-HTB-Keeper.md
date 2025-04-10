@@ -1,7 +1,7 @@
 ---
 title: HTB-Keeper
 date: 2025-04-02
-categories: [HTB]
+categories: [HTB, Machine]
 tags: [cve-2022-32784, offensive, defaultcreds, easy, linux]     # TAG names should always be lowercase
 ---
 
