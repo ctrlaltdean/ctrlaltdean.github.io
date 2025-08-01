@@ -56,9 +56,16 @@ Evilginx2 isn’t packaged in most OS repos, so I cloned and built it directly f
 
 
 ```
-git clone https://github.com/kgretzky/evilginx2.git cd evilginx2 make
+git clone https://github.com/kgretzky/evilginx2.git 
+
+...
+
+cd evilginx2 
 ```
 
+```
+make
+```
 
 Once built, you can run it directly from the command line with root privileges:
 
