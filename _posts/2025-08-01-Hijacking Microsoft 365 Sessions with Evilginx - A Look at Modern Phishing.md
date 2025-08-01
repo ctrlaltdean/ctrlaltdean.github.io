@@ -4,15 +4,14 @@ date: 2025-08-01
 categories: [M365, IncidentResponse]
 tags: [m365, authbypass, mfa]     # TAG names should always be lowercase
 ---
-In today’s world, with a heavy focus on cloud, Multi-Factor Authentication (MFA) has become the gold standard for securing user accounts — but it’s not infallible. Threat Actors have evolved, and so have their tactics. Rather than cracking passwords, modern phishing campaigns increasingly aim to steal session tokens that grant access without ever triggering an MFA prompt. In this article, we’ll demonstrate how **Evilginx**, a man-in-the-middle phishing framework, can hijack a Microsoft 365 session and bypass MFA entirely. We’ll also explore what evidence (if any) is left behind and the challenges defenders face when detecting these stealthy compromises.
 
 ## Introduction:
 
-Multi-Factor Authentication (MFA) has become a baseline control for securing Microsoft 365 accounts. But while it stops the majority of traditional phishing attempts, it’s far from a silver bullet. In recent years, we’ve seen threat actors shift their focus — not to breaking MFA, but to bypassing it entirely using session hijacking.
+In today’s cloud-driven world, Multi-Factor Authentication (MFA) has become the gold standard for securing Microsoft 365 accounts. While it blocks most traditional phishing attempts, it’s far from a silver bullet. Threat actors have adapted—not by breaking MFA outright, but by bypassing it entirely through session hijacking.
 
-This post explores how **Evilginx**, a powerful adversary-in-the-middle phishing tool, can be used to capture session tokens and grant access to Microsoft 365 accounts without ever needing a second factor. The attack relies on real-time phishing to proxy login.microsoftonline.com, allowing an attacker to intercept the authentication flow and steal everything they need to impersonate a user—even one with MFA enabled.
+Modern phishing campaigns increasingly use **adversary-in-the-middle** techniques to steal authenticated session tokens, granting full account access without ever triggering an MFA prompt. One of the most popular tools for this is **Evilginx**, a phishing framework that proxies the legitimate Microsoft login portal in real time. Once a victim completes the login and MFA challenge, Evilginx silently captures the resulting session cookie, enabling attackers to impersonate the user and access Microsoft 365 services without needing credentials or MFA again.
 
-As a cybersecurity analyst working with compromised tenants, I’ve seen how effective these attacks can be and how limited the forensic artifacts are after the fact. In this article, I’ll walk through a simulated Evilginx attack against a test Microsoft 365 tenant, demonstrate exactly how session hijacking works, and show you what evidence (if any) a responder can expect to find in the aftermath.
+As a cybersecurity analyst responding to compromised tenants, I’ve seen how stealthy and effective these attacks can be—and how little forensic evidence they leave behind. In this post, I’ll walk through a simulated Evilginx attack against a test Microsoft 365 tenant, demonstrate how session hijacking works end-to-end, and examine what traces defenders can realistically expect to find during post-compromise investigations.
 
 ## What Is Evilginx and How Does It Work?
 
