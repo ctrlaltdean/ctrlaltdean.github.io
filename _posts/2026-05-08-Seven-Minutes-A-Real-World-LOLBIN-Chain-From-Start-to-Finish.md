@@ -4,8 +4,7 @@ date: 2026-05-08
 categories: [IncidentResponse, MalwareAnalysis]
 tags: [dfir, malwareanalysis, lolbins, com, uac, screenconnect, kape, powershell, vbscript]     # TAG names should always be lowercase
 ---
-
-  ## The Call
+ ## The Call
 
 The call seemed legitimate. Someone claiming to be from their bank knew their name, verified their Social Security Number, and walked them through what sounded like a routine security issue. By the time they were asked to download and run a program to resolve it, there was no reason to be suspicious. That's the thing about social engineering done well. The technical attack is almost an afterthought.
 
