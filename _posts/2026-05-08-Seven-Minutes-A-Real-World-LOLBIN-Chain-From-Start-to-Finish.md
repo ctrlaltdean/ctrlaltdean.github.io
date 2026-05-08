@@ -10,7 +10,7 @@ The call seemed legitimate. Someone claiming to be from their bank knew their na
 
 Something felt off shortly after the program ran. They couldn't say exactly what, just the feeling that something wasn't right. They pulled the power cord and called for help.
 
-That power pull turned out to be one of the best decisions they could have made, and it's also the reason this case is doesn't have a clear closing point. But we'll get to that.
+That power pull turned out to be one of the best decisions they could have made, and it's also the reason this case doesn't have a clear closing point. But we'll get to that.
 
 What I found when I pulled the KAPE triage package is what I want to write about here. This case introduced me to a handful of techniques I'd heard of but never seen with this much depth: Living Off the Land binaries, in-memory code compilation, and a UAC bypass that abuses a legitimate Windows COM interface. I'm still early in my malware analysis journey, and this one pushed me to look things up constantly. I want to share what I learned, along with the honest process of figuring it out, for anyone else working through these concepts for the first time.
 
