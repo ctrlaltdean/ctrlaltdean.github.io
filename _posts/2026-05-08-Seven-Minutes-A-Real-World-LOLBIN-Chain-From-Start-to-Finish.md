@@ -78,7 +78,7 @@ base64Script = "JGJhc2U2NFNjcmlwdCA9ICdablZ1WTNScGIyNGdSR1ZqY25sd..." ' [~500KB 
 <br />
 
 ![](/assets/Images/Seven-Minutes-LOLBIN/Pasted%20image%2020260507151200.png)
-The massive base64 blob
+_The massive base64 blob_
 
  <br /> 
 
@@ -168,7 +168,7 @@ The tell with `wscript.exe` isn't the process itself. It's the child process it 
   
 
 ![](/assets/Images/Seven-Minutes-LOLBIN/Pasted%20image%2020260507155930.png)
-Here we see wscript calling the various LOLBINs and Powershell files generated in the attack chain
+_Here we see wscript calling the various LOLBINs and Powershell files generated in the attack chain_
 
   
 
@@ -387,7 +387,7 @@ The MSI itself had the attacker's C2 endpoint baked in at build time. The relay 
   This is later confirmed in the Enriched Netstat gathered in the KAPE Triage package.  Here you can see ScreenConnect with an active connection to the IP `91[.]92[.]342[.]193:8041`:
 
 ![](/assets/Images/Seven-Minutes-LOLBIN/Pasted%20image%2020260508064948.png)
-The process is also seen running as SYSTEM due to the privilege escalation seen in Stage 3.
+_The process is also seen running as SYSTEM due to the privilege escalation seen in Stage 3._
 
 
 ### The Credential Provider and LSA Auth Package

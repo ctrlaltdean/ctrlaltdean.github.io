@@ -135,7 +135,7 @@ And displayed with the command `lures`.
 In an incognito browser tab, I pasted the phishing link and was presented with the standard Microsoft login prompt. 
 
 ![](/assets/Images/Hijacking_M365/Pasted%20image%2020250801073450.png)
-At a quick glance, the fake URL may go unnoticed by a potential victim.
+_At a quick glance, the fake URL may go unnoticed by a potential victim._
 
 I entered the test user’s credentials and, as expected, received a push notification for MFA approval.
 

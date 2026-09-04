@@ -184,7 +184,7 @@ Combined: ●{ø, Ï, ,, l, `, -, ', ], §, A, I, :, =, _, c, M}dgrød med flød
 Unfortunately, this exploit has a limitation of not accurately grabbing the first character, and occasionally missing the second character as well, but it tries to provide the most likely key.  It got us most of the way there, but the output does not appear to be in English.  Remember the user was Danish, so lets google that password output...
 
 ![](/assets/Images/htb-keeper/Pasted_image_20240122172124.png)
-Google yielded a recipe for Danish Red Berry Pudding, which very closely resembles the password output given by the exploit.  I bet the actual password is `rødgrød med fløde`. 
+_Google yielded a recipe for Danish Red Berry Pudding, which very closely resembles the password output given by the exploit.  I bet the actual password is `rødgrød med fløde`._
 
 Sure enough, that master password worked and I was able to load in the `passcodes.kdbx` file into the fresh instance of KeePass.  Here I find what appears to be root credentials to the Ticketing Server, with a note that it is in PuTTY format.
 
